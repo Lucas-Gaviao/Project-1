@@ -1,0 +1,27 @@
+# MVP:
+1. - Protect the bottom.
+
+- Player -- movement (sides/up and down)
+- Obstacles -- randonly falling inside the board
+- GameOver functionality
+
+# Milestones
+1. - Initial setup - (files/repo)
+
+2. -  Player + movement;
+    a - player class
+    b - event listeners
+
+3. - Obstacles randonly falling;
+    a - create multiple Obstacles
+    b - moveDown functionality
+
+4. GameOver if object hits the bottom;
+    a - Detect collision
+    b - 
+
+Bonus:
+
+1. player is able to shoot the object and score
+2. if objects come through game over
+
