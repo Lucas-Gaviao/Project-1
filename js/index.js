@@ -1,8 +1,9 @@
 class Game {
 
     constructor(){
-        this.player = null
 
+        this.player = null
+        this.objectArr = [];
 
     }
 
@@ -10,23 +11,49 @@ class Game {
 
         this.player = new Player();
         this.attachEventListeners();
+
+        setInterval(() => {
+            const newAlien = new Objects();
+            this.objectArr.push(newAlien);
+        },800)
+      
+        setInterval(() =>{
+          this.objectArr.forEach((alien) => {
+            alien.moveDown();
+
+
+            this.detectCollision(alien);
+
+            this.deleteObject(alien);
+          });  
+        }, 100);
     }
-
     attachEventListeners() {
-        document.addEventListener("keydown", (event) => {
-
-            if(event.code === "ArrowLeft"){
+        document.addEventListener("keydown", (e) => {
+            if(e.code === "ArrowLeft" && this.player.positionX - this.player.playerSpeed >= 0){
                 this.player.moveLeft();
-            } else if(event.code === "ArrowRight"){
+            } else if(e.code === "ArrowRight" && this.player.positionX + this.player.playerSpeed <= 100){
                 this.player.moveRight();
-            } else if(event.code === "ArrowUp"){
-                this.player.moveUp();
-            } else if(event.code === "ArrowDown"){
-                this.player.moveDown();
-            }
-          })
-        
-    }    
+            } 
+          })  
+    }
+    detectCollision(alien){
+        if (alien.positionX < this.player.positionX + this.player.width &&
+            alien.positionX + alien.width > this.player.positionX &&
+            alien.positionY < this.player.positionY + this.player.height &&
+            alien.height + alien.positionY > this.player.positionY) {
+                location.href = "/game-over.html";
+            } 
+        }
+    
+    deleteObject(alien){
+        if(alien.positionX < 0 - alien.height){
+            //remove element from the dom;
+            alien.DomEl.remove();
+            //remove the element from the array;
+            this.objectArr.shift();
+        }
+    }
 }
 
 class Player {
@@ -34,8 +61,9 @@ class Player {
     constructor(){
         this.height = 10;
         this.width = 3;
-        this.positionX = 0
-        this.positionY = 50 - this.height / 2;
+        this.positionX = 50 - this.height / 2;
+        this.positionY = 0
+        this.playerSpeed = 3;
 
         this.DomEl = null;
 
@@ -51,45 +79,44 @@ class Player {
         this.DomEl.style.left = this.positionX + "vw";
         this.DomEl.style.bottom = this.positionY + "vh";
 
-        const parent = document.getElementById("board");
+        const parent = document.getElementById("space");
         parent.appendChild(this.DomEl);
     }  
     
-    moveUp() {
-        this.positionY += 2;
+  /*  moveUp() {
+        this.positionY += this.playerSpeed;
         this.DomEl.style.bottom = this.positionY + "vh";
     }
 
     moveDown() {
-        this.positionY -=2;
+        this.positionY -= this.playerSpeed;
         this.DomEl.style.bottom = this.positionY + "vh"
 
     }
-
+*/
     moveLeft() {
-        this.positionX -=2;
-        if(this.positionX >= 0){
+        if(this.positionX > 0 + this.width){
+            this.positionX -= this.playerSpeed;
             this.DomEl.style.left = this.positionX + "vw";
         }
     }
 
     moveRight() {
-        this.positionX += 2;
-        if(this.positionX >= 0 && this.positionX < 100){
+        if(this.positionX <= 100 - this.width){
+            this.positionX += this.playerSpeed;
             this.DomEl.style.left = this.positionX + "vw";
-        } else {
-            this.positionX = 0;
-        }
+        } 
     }
 }
 
 class Objects {
 
     constructor(){
-        this.height = 15
-        this.width = 5
-        this.positionX = 100
-        this.positionY = 50 - this.height / 2
+        this.height = 8;
+        this.width = 10;
+        this.positionX = Math.floor(Math.random() * (100 - this.width));
+        this.positionY = 100;
+        this.objectSpeed = 2;
 
         this.DomEl = null;
 
@@ -106,19 +133,26 @@ class Objects {
         this.DomEl.style.left = this.positionX + "vw";
         this.DomEl.style.bottom = this.positionY + "vh";
 
-        const parent = document.getElementById("board");
+        const parent = document.getElementById("space");
         parent.appendChild(this.DomEl);
         
     }
 
-    moveLeft(){
-        this.positionX -= 2;
-        if(this.positionX < 100){
-            this.DomEl.style.left = this.positionX + "vw";
-        }
+    moveDown() {
+        this.positionY -= this.objectSpeed;
+        this.DomEl.style.bottom = this.positionY + "vh"
+
     }
+  
 }
 
+class PowerObj{
+    constructor(){
+
+    }
+}   
 
 
+const game = new Game();
+game.startGame();
 
