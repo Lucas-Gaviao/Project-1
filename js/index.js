@@ -13,7 +13,6 @@ class Game {
     }
 
     attachEventListeners() {
-            //attach  addEventListener =>
         document.addEventListener("keydown", (event) => {
 
             if(event.code === "ArrowLeft"){
@@ -70,14 +69,14 @@ class Player {
     moveLeft() {
         this.positionX -=2;
         if(this.positionX >= 0){
-            this.DomEl.style.left = this.positionX + "vh";
+            this.DomEl.style.left = this.positionX + "vw";
         }
     }
 
     moveRight() {
         this.positionX += 2;
         if(this.positionX >= 0 && this.positionX < 100){
-            this.DomEl.style.left = this.positionX + "vh";
+            this.DomEl.style.left = this.positionX + "vw";
         } else {
             this.positionX = 0;
         }
@@ -113,12 +112,13 @@ class Objects {
     }
 
     moveLeft(){
-
+        this.positionX -= 2;
+        if(this.positionX < 100){
+            this.DomEl.style.left = this.positionX + "vw";
+        }
     }
 }
 
 
 
-const player1 = new Player(); 
 
-player1.createDomElement();

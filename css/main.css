@@ -5,29 +5,27 @@ body {
 }
 
 #board {
-    background-color: black;
+    background-image: url(/images/hd-wallpaper-2695569.jpg);
     height: 100vh;
     width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
     position: relative;
-    
-    
-    
-    
 }
 
 #score {
     text-align: center;
     text-shadow: 5px;
-    font-size: 30px;
-    position: absolute;
+    font-size: 40px;
     color: white;
 }
 
 #player {
-    background-color: white;
+    background-color: gold;
     position: absolute;
 }
 
 #obstacle {
-
+background-image: url();
 }
