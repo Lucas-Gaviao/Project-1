@@ -1,7 +1,9 @@
 body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
 }
 
 #space {
@@ -10,9 +12,10 @@ body {
     width: 100vw;
     background-size: cover;
     background-repeat: no-repeat;
-    background-blend-mode: darken;
     position: relative;
-    overflow: hidden;
+}
+h1 {
+    color: aquamarine;
 }
 
 #score {
@@ -25,9 +28,15 @@ body {
 #player {
     background-color: rgb(255, 255, 255);
     position: absolute;
+    border-radius: 6px;
 }
 
 #object {
-    background-color: aqua;
+    background-color: aquamarine;
     position: absolute;
+    border-radius: 5px;
+}
+
+#bullet {
+    background-color: chartreuse;
 }
