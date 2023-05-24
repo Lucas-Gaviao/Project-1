@@ -1,9 +1,21 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    
+}
+
+#music {
+    position: absolute;
+    top: 0%;
+    left: 0%;
 }
 
 #space {
@@ -11,30 +23,31 @@ body {
     height: 100vh;
     width: 100vw;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     position: relative;
 }
 h1 {
     color: aquamarine;
+    margin: 0;
 }
 
 #score {
     text-align: center;
-    text-shadow: 5px;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
 }
 
 #player {
-    background-color: rgb(242, 255, 0);
+    background-image: url(../images/png-transparent-space-invaders-alien-invaders-from-space-pixel-blocks-video-game-android-space-invaders-blue-game-angle-thumbnail-removebg-preview.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     position: absolute;
-    border-radius: 6px;
 }
 
 #object {
-    background-color: aquamarine;
+    background-image: url(../images/alien-spaceship-unidentified-flying-object-ufo-spacecraft-isolated-white-background-alien-spaceship-unidentified-flying-object-195330453-removebg-preview.png);
     position: absolute;
-    border-radius: 5px;
 }
 
 #bullet {

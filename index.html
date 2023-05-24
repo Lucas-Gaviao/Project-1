@@ -10,9 +10,25 @@
   <body>
     <div id="space">
       <h1>Alien Hunter</h1>
+      <audio
+        id="music"
+        autoplay
+        loop
+        src="./music/8d82b5_Star_Wars_Main_Theme_Song.mp3"
+      ></audio>
       <div id="score">
         <span class="score_title">Score:</span>
         <span class="score_value">0</span>
+      </div>
+      <div class="timer">
+        <div class="container-minute">
+          <h3 class="minute">time</h3>
+          <h3>Minutes</h3>
+        </div>
+        <div class="container-second">
+          <h3 class="second">time</h3>
+          <h3>Seconds</h3>
+        </div>
       </div>
     </div>
     <script src="./js/index.js"></script>

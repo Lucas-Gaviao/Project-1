@@ -12,6 +12,10 @@ class Game {
         this.player = new Player();
         this.attachEventListeners();
 
+        //Adjusting the volume;
+        let music = document.getElementById("music");
+        music.volume = 0.2;
+
         setInterval(() => {
             const newObject = new Objects();
             this.objectArr.push(newObject);
@@ -60,11 +64,11 @@ class Game {
             } 
     }
 
-    detectBulletCollision(singleBullet){
-        if (singleBullet.positionX < this.player.positionX + this.player.width &&
-            singleBullet.positionX + singleBullet.width > this.player.positionX &&
-            singleBullet.positionY < this.player.positionY + this.player.height &&
-            singleBullet.height + singleBullet.positionY > this.player.positionY) {
+    detectBulletCollision(singleBullet, object){
+        if (object.positionX < singleBullet.positionX + singleBullet.width &&
+            object.positionX + object.width > singleBullet.positionX &&
+            object.positionY < singleBullet.positionY + singleBullet.height &&
+            object.height + object.positionY > singleBullet.positionY) {
                 
             } 
     }
@@ -83,9 +87,9 @@ class Game {
 
         if(singleBullet.positionY < 0 - singleBullet.height){
             //remove element from the dom;
-            object.DomEl.remove();
+            singleBullet.domElBullet.remove();
             //remove the element from the array;
-            this.objectArr.shift();   
+            this.bulletArr.shift();   
         }
     }
 }
@@ -93,8 +97,8 @@ class Game {
 class Player {
 
     constructor(){
-        this.height = 3;
-        this.width = 3;
+        this.height = 8;
+        this.width = 8;
         this.positionX = 50 - this.height / 2;
         this.positionY = 10
         this.playerSpeed = 2;
@@ -213,6 +217,10 @@ class Bullet {
 
 }   
 
+
+//Adjusting the volume;
+let audio = document.getElementById("music");
+audio.volume = 0.2;
 
 const game = new Game();
 game.startGame();
