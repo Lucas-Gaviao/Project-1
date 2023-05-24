@@ -4,17 +4,17 @@ class Game {
 
         this.player = null
         this.objectArr = [];
+        this.bulletArr = [];
     }
 
     startGame(){
 
         this.player = new Player();
         this.attachEventListeners();
-        this.object = new Objects();
 
         setInterval(() => {
-            
-            this.objectArr.push(object);
+            const newObject = new Objects();
+            this.objectArr.push(newObject);
         },800)
       
         setInterval(() =>{
@@ -24,44 +24,70 @@ class Game {
             this.deleteObject(object);
           });  
         }, 100);
+
+        setInterval(() =>{
+            this.bulletArr.forEach((singleBullet) => {
+            singleBullet.shootUp();
+            this.detectBulletCollision(singleBullet);
+            this.deleteBullet(singleBullet);
+            })
+        }, 80)
     }
+
 
     attachEventListeners() {
         document.addEventListener("keydown", (e) => {
             if(e.code === "ArrowLeft" && this.player.positionX - this.player.playerSpeed >= 0){
                 this.player.moveLeft();
-                this.detectCollision();
+                
             } else if(e.code === "ArrowRight" && this.player.positionX + this.player.playerSpeed <= 100){
                 this.player.moveRight();
-                this.detectCollision();
+                
             } else if(e.code === "ArrowUp" && this.player.positionY - this.player.playerSpeed <= 100){
                 this.player.moveUp();
-                this.detectCollision();
             } else if(e.code === "ArrowDown" && this.player.positionY - this.player.playerSpeed >= 0){
-                this.player.moveDown();
-                this.detectCollision();
-            } else if(e.code === "SpaceBar"){
-                this.bullet.shootUp();
-                alert(e.code)
+                this.player.moveDown();     
+            } else if(e.code === "Space"){
+                const newBullet = new Bullet();
+                this.bulletArr.push(newBullet);    
             }
           })  
     }
     detectCollision(object){
-        
-        if (this.object.positionX < this.player.positionX + this.player.width &&
+        if (object.positionX < this.player.positionX + this.player.width &&
             object.positionX + object.width > this.player.positionX &&
             object.positionY < this.player.positionY + this.player.height &&
             object.height + object.positionY > this.player.positionY) {
                 location.href = "/game-over.html";
             } 
     }
+
+    detectBulletCollision(singleBullet){
+        if (singleBullet.positionX < this.player.positionX + this.player.width &&
+            singleBullet.positionX + singleBullet.width > this.player.positionX &&
+            singleBullet.positionY < this.player.positionY + this.player.height &&
+            singleBullet.height + singleBullet.positionY > this.player.positionY) {
+                
+            } 
+    }
     
     deleteObject(object){
-        if(object.positionX < 0 - object.height){
+
+        if(object.positionY < 0 - object.height){
             //remove element from the dom;
             object.DomEl.remove();
             //remove the element from the array;
-            this.objectArr.shift();
+            this.objectArr.shift();   
+        }
+    }
+
+    deleteBullet(singleBullet){
+
+        if(singleBullet.positionY < 0 - singleBullet.height){
+            //remove element from the dom;
+            object.DomEl.remove();
+            //remove the element from the array;
+            this.objectArr.shift();   
         }
     }
 }
@@ -151,8 +177,7 @@ class Objects {
         this.positionY -= this.objectSpeed;
         this.DomEl.style.bottom = this.positionY + "vh"
 
-    }
-  
+    } 
 }
 
 class Bullet extends Game {
@@ -184,7 +209,7 @@ class Bullet extends Game {
 
     shootUp(){
         this.bulletY += this.bulletSpeed;
-        this.domElBullet.style.bottom = this.bulletY + "vh"
+        this.domElBullet.style.bottom = this.bulletY + "vh";
     }
 
 }   
