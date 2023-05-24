@@ -58,7 +58,7 @@ class Game {
             object.positionX + object.width > this.player.positionX &&
             object.positionY < this.player.positionY + this.player.height &&
             object.height + object.positionY > this.player.positionY) {
-                location.href = "/game-over.html";
+                location.href = "../game-over.html";
             } 
     }
 
