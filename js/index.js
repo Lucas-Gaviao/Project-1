@@ -38,17 +38,15 @@ class Game {
     attachEventListeners() {
         document.addEventListener("keydown", (e) => {
             if(e.code === "ArrowLeft" && this.player.positionX - this.player.playerSpeed >= 0){
-                this.player.moveLeft();
-                
+                this.player.moveLeft();  
             } else if(e.code === "ArrowRight" && this.player.positionX + this.player.playerSpeed <= 100){
-                this.player.moveRight();
-                
+                this.player.moveRight();   
             } else if(e.code === "ArrowUp" && this.player.positionY - this.player.playerSpeed <= 100){
                 this.player.moveUp();
             } else if(e.code === "ArrowDown" && this.player.positionY - this.player.playerSpeed >= 0){
                 this.player.moveDown();     
             } else if(e.code === "Space"){
-                const newBullet = new Bullet();
+                const newBullet = new Bullet(this.player.positionX, this.player.positionY);
                 this.bulletArr.push(newBullet);    
             }
           })  
@@ -120,6 +118,7 @@ class Player {
     }  
     
     moveUp() {
+        if(this.positionY + this.playerSpeed < 100)
         this.positionY += this.playerSpeed;
         this.DomEl.style.bottom = this.positionY + "vh";
     }
@@ -180,12 +179,12 @@ class Objects {
     } 
 }
 
-class Bullet extends Game {
-    constructor(){
+class Bullet {
+    constructor(positionX, positionY){
         this.height = 1;
-        this.width = 1;
-        this.bulletX = this.player.positionX;
-        this.bulletY = this.player.positionY;
+        this.width = 0.3;
+        this.bulletX = positionX;
+        this.bulletY = positionY;
         this.bulletSpeed = 2;
 
         this.domElBullet = null;

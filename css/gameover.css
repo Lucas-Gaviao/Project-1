@@ -1,13 +1,19 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgb(150, 147, 131);
+    background-image: url(../images/wp8641362-thats-all-folks-wallpapers.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    text-align: center;
+    position: relative;
     
 
 }
 
 a {
 text-decoration: underline;
-color: black;
+color: white;
+
+
 
 }
