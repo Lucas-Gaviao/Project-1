@@ -38,7 +38,8 @@ h1 {
 }
 
 #player {
-    background-image: url(../images/png-transparent-space-invaders-alien-invaders-from-space-pixel-blocks-video-game-android-space-invaders-blue-game-angle-thumbnail-removebg-preview.png);
+    background-image: url(../images/nave-hero.png);
+    /*background-color: aliceblue;*/
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -46,7 +47,11 @@ h1 {
 }
 
 #object {
-    background-image: url(../images/alien-spaceship-unidentified-flying-object-ufo-spacecraft-isolated-white-background-alien-spaceship-unidentified-flying-object-195330453-removebg-preview.png);
+    background-image: url(../images/nave.png);
+    /*background-color: aqua;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     position: absolute;
 }
 

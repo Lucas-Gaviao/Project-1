@@ -98,7 +98,7 @@ class Player {
 
     constructor(){
         this.height = 8;
-        this.width = 8;
+        this.width = 4.5;
         this.positionX = 50 - this.height / 2;
         this.positionY = 10
         this.playerSpeed = 2;
@@ -151,8 +151,8 @@ class Player {
 class Objects {
 
     constructor(){
-        this.height = 4;
-        this.width = 8;
+        this.height = 5.5;
+        this.width = 5;
         this.positionX = Math.floor(Math.random() * (100 - this.width));
         this.positionY = 100;
         this.objectSpeed = 2;
