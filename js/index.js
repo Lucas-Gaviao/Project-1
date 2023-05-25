@@ -185,11 +185,11 @@ class Objects {
 
 class Bullet {
     constructor(positionX, positionY){
-        this.height = 1;
-        this.width = 0.3;
+        this.height = 2;
+        this.width = 0.2;
         this.bulletX = positionX;
         this.bulletY = positionY;
-        this.bulletSpeed = 2;
+        this.bulletSpeed = 3;
 
         this.domElBullet = null;
 

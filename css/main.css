@@ -57,4 +57,6 @@ h1 {
 
 #bullet {
     background-color: chartreuse;
+    position: absolute;
+    flex: auto;
 }
