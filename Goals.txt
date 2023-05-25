@@ -11,13 +11,14 @@
 2. -  Player + movement; //done
     a - player class //done
     b - event listeners //done
+    c - track score
 
 3. - Obstacles randonly falling;
-    a - create multiple Obstacles
-    b - moveDown functionality
+    a - create multiple Obstacles // done
+    b - moveDown functionality // done
 
 4. GameOver if object hits the bottom;
-    a - Detect collision
+    a - Detect collision //done
     b - 
 
 Bonus:

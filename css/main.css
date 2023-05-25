@@ -1,6 +1,7 @@
 html {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 body {
@@ -19,7 +20,7 @@ body {
 }
 
 #space {
-    background-image: url(../images/hd-wallpaper-2695569.jpg);
+    background-image: url(../images/newbackground.jpeg);
     height: 100vh;
     width: 100vw;
     background-size: cover;
@@ -28,6 +29,8 @@ body {
 }
 h1 {
     color: aquamarine;
+    display: inline;
+    background-color: black;
     margin: 0;
 }
 
@@ -58,5 +61,5 @@ h1 {
 #bullet {
     background-color: chartreuse;
     position: absolute;
-    flex: auto;
+    
 }

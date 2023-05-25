@@ -5,39 +5,42 @@ class Game {
         this.player = null
         this.objectArr = [];
         this.bulletArr = [];
+        this.score = 0;
     }
 
     startGame(){
 
         this.player = new Player();
         this.attachEventListeners();
-
+        
         //Adjusting the volume;
         let music = document.getElementById("music");
-        music.volume = 0.2;
-
+        music.volume = 0.1;
+        
         setInterval(() => {
             const newObject = new Objects();
             this.objectArr.push(newObject);
         },800)
       
         setInterval(() =>{
-          this.objectArr.forEach((object) => {
+          this.objectArr.forEach((object, index) => {
             object.moveDown();
             this.detectCollision(object);
-            this.deleteObject(object);
+            this.deleteObject(object, index);
+
+            this.bulletArr.forEach((bullet, indexBullet)=> {
+                this.detectBulletCollision(object, bullet, index, indexBullet)
+            })
           });  
         }, 100);
 
         setInterval(() =>{
-            this.bulletArr.forEach((singleBullet) => {
-            singleBullet.shootUp();
-            this.detectBulletCollision(singleBullet);
-            this.deleteBullet(singleBullet);
+            this.bulletArr.forEach((bullet) => {
+            bullet.shootUp();
+            this.deleteBullet(bullet); 
             })
-        }, 80)
+        }, 50)        
     }
-
 
     attachEventListeners() {
         document.addEventListener("keydown", (e) => {
@@ -50,8 +53,10 @@ class Game {
             } else if(e.code === "ArrowDown" && this.player.positionY - this.player.playerSpeed >= 0){
                 this.player.moveDown();     
             } else if(e.code === "Space"){
-                const newBullet = new Bullet(this.player.positionX, this.player.positionY);
-                this.bulletArr.push(newBullet);    
+                const newBullet = new Bullet(this.player.height, this.player.width, this.player.positionX, this.player.positionY);
+                this.bulletArr.push(newBullet);   
+
+                //console.log(this.bulletArr)
             }
           })  
     }
@@ -64,14 +69,28 @@ class Game {
             } 
     }
 
-    detectBulletCollision(singleBullet, object){
-        if (object.positionX < singleBullet.positionX + singleBullet.width &&
-            object.positionX + object.width > singleBullet.positionX &&
-            object.positionY < singleBullet.positionY + singleBullet.height &&
-            object.height + object.positionY > singleBullet.positionY) {
-                
-            } 
-    }
+    detectBulletCollision(object, bullet, index, indexBullet){
+        if (bullet.bulletX < object.positionX + object.width &&
+            bullet.bulletX + bullet.width > object.positionX &&
+            bullet.bulletY < object.positionY + object.height &&
+            bullet.height + bullet.bulletY > object.positionY){
+                object.health -= bullet.damage; 
+                bullet.domElBullet.remove();
+                this.bulletArr.splice(indexBullet, 1);
+
+                if(object.health <= 0){
+                    object.DomEl.remove();
+                    this.objectArr.splice(index, 1);
+                    this.score += 10;
+                    
+                    const showScore = document.getElementById("score")
+                    showScore.textContent = `Score: ${this.score}`;
+                        if(this.score === 400){
+                         this.gameWinner();         
+                    };
+                }
+             } 
+        }
     
     deleteObject(object){
 
@@ -83,14 +102,20 @@ class Game {
         }
     }
 
-    deleteBullet(singleBullet){
+    deleteBullet(bullet){
 
-        if(singleBullet.positionY < 0 - singleBullet.height){
+        if(bullet.bulletY > 100 + bullet.height){
             //remove element from the dom;
-            singleBullet.domElBullet.remove();
+            bullet.domElBullet.remove();
             //remove the element from the array;
-            this.bulletArr.shift();   
+            this.bulletArr.shift(); 
         }
+    }
+
+    gameWinner(){
+        
+            location.href="../winner.html"
+        
     }
 }
 
@@ -101,7 +126,7 @@ class Player {
         this.width = 4.5;
         this.positionX = 50 - this.height / 2;
         this.positionY = 10
-        this.playerSpeed = 2;
+        this.playerSpeed = 4;
 
         this.DomEl = null;
 
@@ -156,6 +181,7 @@ class Objects {
         this.positionX = Math.floor(Math.random() * (100 - this.width));
         this.positionY = 100;
         this.objectSpeed = 2;
+        this.health = 6;
 
         this.DomEl = null;
 
@@ -184,12 +210,13 @@ class Objects {
 }
 
 class Bullet {
-    constructor(positionX, positionY){
-        this.height = 2;
+    constructor(height, width, positionX, positionY){
+        this.height = 1.5;
         this.width = 0.2;
-        this.bulletX = positionX;
-        this.bulletY = positionY;
-        this.bulletSpeed = 3;
+        this.bulletX = positionX + width / 2;
+        this.bulletY = positionY + height;
+        this.bulletSpeed = 4;
+        this.damage = 7;
 
         this.domElBullet = null;
 
@@ -216,11 +243,6 @@ class Bullet {
     }
 
 }   
-
-
-//Adjusting the volume;
-let audio = document.getElementById("music");
-audio.volume = 0.2;
 
 const game = new Game();
 game.startGame();

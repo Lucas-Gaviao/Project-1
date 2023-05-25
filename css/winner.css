@@ -1,0 +1,72 @@
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+#space {
+    background-image: url(../images/hd-wallpaper-2695569.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: repeat;
+    position: relative;
+}
+
+#game-name {
+    color: aquamarine;
+    display: inline-block;
+    background-color: black;
+    margin: 0;
+}
+
+#winner-text {
+    color: aquamarine;
+    background-color: black;
+    margin: 0;
+    top: 50%;
+}
+
+#img {
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    padding: 5%;  
+    
+}
+
+#play-again {
+    color: aquamarine;
+    background-color: black;
+    font-size: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 3px solid aquamarine;
+    position: absolute;
+    top: 50%;
+    align-items: center;
+    right: 46%;
+    border-radius: 10px;
+}
+
+#play-again:hover {
+    font-size: 30px;
+    color: aliceblue;
+}
+
+#music {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
