@@ -126,7 +126,7 @@ class Player {
         this.width = 4.5;
         this.positionX = 50 - this.height / 2;
         this.positionY = 10
-        this.playerSpeed = 4;
+        this.playerSpeed = 3;
 
         this.DomEl = null;
 
@@ -211,11 +211,11 @@ class Objects {
 
 class Bullet {
     constructor(height, width, positionX, positionY){
-        this.height = 1.5;
+        this.height = 1.3;
         this.width = 0.2;
         this.bulletX = positionX + width / 2;
         this.bulletY = positionY + height;
-        this.bulletSpeed = 4;
+        this.bulletSpeed = 3.5;
         this.damage = 7;
 
         this.domElBullet = null;
