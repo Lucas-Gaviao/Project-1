@@ -1,0 +1,77 @@
+html {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    overflow: hidden;
+}
+
+body {
+    background-image: url(../images/hd-wallpaper-2695569.jpg);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#space {
+    position: relative;
+}
+
+#pre-intro {
+    color: aquamarine;
+    display: inline;
+    background-color: black;
+    font-size: 25px;
+}
+
+#intro-text {
+    color: aquamarine;
+    position: absolute;
+    text-align: justify;
+    background-color: black;
+    font-size: 20px;
+}
+
+#divImg {
+    margin-top: 10%;
+    text-align: center;
+    
+}
+
+#instructions {
+    color: aquamarine;
+    font-size: 25px;
+    background-color: black;
+    display: inline;
+}
+
+#divList {
+    display: flex;
+    justify-content: center;
+}
+
+#list {
+    color: aquamarine;
+    font-size: 20px;
+    background-color: black;
+    width: fit-content;
+    text-align: center;
+    
+}
+#play {
+    color: aquamarine;
+    background-color: black;
+    border: 3px solid aquamarine;
+    font-size: 40px;
+    text-decoration: none;
+    border-radius: 5px;
+    letter-spacing: 5px;
+    text-align: center;
+}
+#play:hover {
+    font-size: 50px;
+    color: aliceblue;
+}
