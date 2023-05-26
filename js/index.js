@@ -85,7 +85,7 @@ class Game {
                     
                     const showScore = document.getElementById("score")
                     showScore.textContent = `Score: ${this.score}`;
-                        if(this.score === 400){
+                        if(this.score === 200){
                          this.gameWinner();         
                     };
                 }
