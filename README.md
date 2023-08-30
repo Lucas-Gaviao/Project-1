@@ -20,4 +20,4 @@ Join the fight, Star Lord! Defeat the Empire's ships, embrace your destiny, and 
 
 ## **Demo**
 
-[https://lucas-gaviao.github.io/STAR-LORD/](https://lucas-gaviao.github.io/STAR-LORD/)https://lucas-gaviao.github.io/STAR-LORD/
+https://lucas-gaviao.github.io/STAR-LORD/
